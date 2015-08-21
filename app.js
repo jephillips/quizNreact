@@ -36,7 +36,6 @@ var Question = React.createClass({
         correct: React.PropTypes.bool,
         question: React.PropTypes.string.isRequired,
         answer: React.PropTypes.string.isRequired,
-        update: React.PropTypes.func.isRequired,
         guess: React.PropTypes.string
     },
     getDefaultProps: function () {
