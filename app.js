@@ -29,49 +29,50 @@ var App = React.createClass({
                         <div>
                             <Question ref={question.id}
                                       question={question.question}
-                                      answer={question.answer}/>
+                                      answer={question.answer}
+                                      key={question.id}/>
                         </div>
                     )
                 })}
-            <button onClick={this.submit}>{'Submit'}</button>
+                <button onClick={this.submit}>{'Submit'}</button>
             </div>
-                );
+        );
 
-                }
-                });
+    }
+});
 
-                var Question = React.createClass({
-                propTypes: {
-                correct: React.PropTypes.bool,
-                question: React.PropTypes.string.isRequired,
-                answer: React.PropTypes.string.isRequired,
-                guess: React.PropTypes.string
-            },
-                getDefaultProps: function () {
-                return {
-                question: '',
-                answer: '',
-                guess: ''
-            }
-            },
-                verify: function(e){
-                this.guess = e.target.value;
-                this.correct =  this.props.answer === this.guess;
-            }
-                ,
-                render: function () {
-                return (
-                <div>
+var Question = React.createClass({
+    propTypes: {
+        correct: React.PropTypes.bool,
+        question: React.PropTypes.string.isRequired,
+        answer: React.PropTypes.string.isRequired,
+        guess: React.PropTypes.string
+    },
+    getDefaultProps: function () {
+        return {
+            question: '',
+            answer: '',
+            guess: ''
+        }
+    },
+    verify: function (e) {
+        this.guess = e.target.value;
+        this.correct = this.props.answer === this.guess;
+    }
+    ,
+    render: function () {
+        return (
+            <div>
                 <label>{this.props.question} </label>
                 <br />
                 <input ref="inp"
-                type="text"
-                question={this.props.question}
-                answer={this.props.answer}
-                onChange={this.verify}/>
-                </div>
-                );
-            }
-            });
+                       type="text"
+                       question={this.props.question}
+                       answer={this.props.answer}
+                       onChange={this.verify}/>
+            </div>
+        );
+    }
+});
 
-                React.render(<App />, document.body);
+React.render(<App />, document.body);
